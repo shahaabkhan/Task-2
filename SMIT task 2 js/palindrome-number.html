@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>palindrome Numbers</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function isPalindrome(str) {
+    // Convert the string to lowercase to ignore case sensitivity
+    str = str.toLowerCase();
+    
+    // Remove non-alphanumeric characters from the string
+    str = str.replace(/[^a-z0-9]/g, "");
+    
+    // Compare characters from start and end of the string
+    for (let i = 0; i < Math.floor(str.length / 2); i++) {
+        if (str[i] !== str[str.length - 1 - i]) {
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+// Test cases to validate the function's correctness
+console.log(isPalindrome("level")); // true
+document.write("level is a palindrome text <br><br><br>");
+console.log(isPalindrome("Racecar")); // true
+document.write("Races is a palindrome Text <br><br><br>");
+console.log(isPalindrome("A man, a plan, a canal, Panama")); // true
+document.write("The given statement is a palindrome <br><br><br>")
+console.log(isPalindrome("hello")); // false
+document.write("Hello is not a palindrome text")
+
+</script>

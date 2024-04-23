@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Find Missing Numbers</title>
+</head>
+<body>
+  <p>Missing Numbers: <span id="missingNumber"></span></p>
+  <script>
+    function findMissingNumber(arr) {
+      // Handle empty or single-element arrays
+      if (arr.length <= 1) {
+        return "Not enough elements to determine missing number.";
+      }
+
+      // Calculate expected difference based on the sequence
+      const expectedDifference = arr[1] - arr[0];
+
+      const missingNumbers = [];
+      // Iterate through the array, checking for missing numbers
+      for (let i = 1; i < arr.length; i++) {
+        const expectedNumber = arr[i - 1] + expectedDifference;
+        if (arr[i] !== expectedNumber) {
+          missingNumbers.push(expectedNumber); // Add missing number
+        }
+      }
+
+      return missingNumbers.length > 0 ? missingNumbers.join(", ") : "No missing number found in the sequence.";
+    }
+
+    // Function to display the missing number on the webpage
+    function displayMissingNumber(missingNumbers) {
+      const missingNumberElement = document.getElementById("missingNumber");
+      if (missingNumberElement) {
+        missingNumberElement.textContent = missingNumbers;
+      } else {
+        console.error("Missing HTML element with ID 'missingNumber'.");
+      }
+    }
+
+    // Call the function with your series
+    const series = [11, 12, 14, 15, 16, 18, 19, 20];
+    const missingNumbers = findMissingNumber(series);
+    displayMissingNumber(missingNumbers);
+  </script>
+</body>
+</html>

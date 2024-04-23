@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Min and Max Finder</title>
+</head>
+<body>
+<div id="result"></div>
+
+<script>
+function findMinMax(numbers) {
+    if (!Array.isArray(numbers) || numbers.length === 0) {
+        return null; // Return null for invalid input
+    }
+    
+    let min = numbers[0];
+    let max = numbers[0];
+
+    for (let i = 1; i < numbers.length; i++) {
+        if (numbers[i] < min) {
+            min = numbers[i];
+        }
+        if (numbers[i] > max) {
+            max = numbers[i];
+        }
+    }
+
+    return { min, max };
+}
+
+// Test cases
+const series1 = [3, 7, 2, 8, 1, 5];
+const series2 = [-10, 0, 15, -5, 20];
+const series3 = [];
+
+const result1 = findMinMax(series1);
+const result2 = findMinMax(series2);
+const result3 = findMinMax(series3);
+
+document.getElementById('result').innerHTML = `
+    <p>Series 1: Min = ${result1.min}, Max = ${result1.max}</p>
+    <p>Series 2: Min = ${result2.min}, Max = ${result2.max}</p>
+    <p>Series 3: ${result3 ? `Min = ${result3.min}, Max = ${result3.max}` : "Invalid input"}</p>
+`;
+</script>
+</body>
+</html>
